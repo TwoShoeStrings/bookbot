@@ -1,3 +1,8 @@
+import sys
+if len(sys.argv) != 2:
+    print("Usage: python3 main.py <path_to_book>")
+    sys.exit(1)
+
 def get_book_text(filepath):
     with open(filepath) as f:
         file_contents = f.read()
@@ -10,7 +15,7 @@ from stats import get_letter_count
 from stats import sorted_dict
 
 def main():
-    filepath = "./books/frankenstein.txt"
+    filepath = sys.argv[1]
     text = get_book_text(filepath)
     num_words = count_words(text)
     letter_count = get_letter_count(text)
@@ -21,7 +26,7 @@ def main():
     print(f"Found {num_words} total words")
     print("--------- Character Count -------")
     for char_data in sorted_list:
-        print(f"{char_data["char"]}: {char_data["num"]}")
+        print(f"{char_data['char']}: {char_data['num']}")
     print("============= END ===============")
     
 
